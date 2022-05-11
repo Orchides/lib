@@ -407,7 +407,7 @@ mouse.KeyDown:Connect(function(a)
 						local an = checkfov(plr.Character.Head)
 							if an < maxangle then
 								maxangle = an
-								aimatpart = plr.Character.Head
+								aimatpart = plr.Character.Torso
 							end
 							print(plr)
 					end
@@ -463,21 +463,21 @@ local minangle = math.rad(5.5)
 local lastpart = nil
 local function gg(plr)
 pcall(function()
-if plr.Name ~= lplr.Name and plr.Character and plr.Character.Humanoid and plr.Character.Humanoid.Health > 0 and plr.Character.Head then
+if plr.Name ~= lplr.Name and plr.Character and plr.Character.Humanoid and plr.Character.Humanoid.Health > 0 and plr.Character.Torso then
 local raycasted = false
-local cf1 = CFrame.new(cam.CFrame.p, plr.Character.Head.CFrame.p) * CFrame.new(0, 0, -4)
+local cf1 = CFrame.new(cam.CFrame.p, plr.Character.Torso.CFrame.p) * CFrame.new(0, 0, -4)
 local r1 = Ray.new(cf1.p, cf1.LookVector * 9000)
-local obj, pos = game.Workspace:FindPartOnRayWithIgnoreList(r1,  {lplr.Character.Head})
-local dist = (plr.Character.Head.CFrame.p- pos).magnitude
+local obj, pos = game.Workspace:FindPartOnRayWithIgnoreList(r1,  {lplr.Character.Torso})
+local dist = (plr.Character.Torso.CFrame.p- pos).magnitude
 if dist < 4 then
 raycasted = true
 end
 if raycasted == true then
-local an1 = getfovxyz(cam.CFrame, plr.Character.Head.CFrame)
+local an1 = getfovxyz(cam.CFrame, plr.Character.Torso.CFrame)
 local an = abs(an1.X) + abs(an1.Y)
 if an < minangle then
 minangle = an
-lastpart = plr.Character.Head
+lastpart = plr.Character.Torso
 end
 end
 end
@@ -509,7 +509,7 @@ local oldheadpos
 local lastaimapart
 game:GetService("RunService").RenderStepped:Connect(function()
 espstatustext.Text = "Esp loop :"..tostring(autoesp)
-if aimatpart and lplr.Character and lplr.Character.Head then
+if aimatpart and lplr.Character and lplr.Character.Torso then
 if BetterDeathCount and lastaimapart and lastaimapart == aimatpart then
 local dist = (oldheadpos - aimatpart.CFrame.p).magnitude
 if dist > 40 then
@@ -527,7 +527,7 @@ pcall(function()
 if Aim_Assist == true then
 local cf1 = CFrame.new(cam.CFrame.p, aimatpart.CFrame.p) * CFrame.new(0, 0, -4)
 local r1 = Ray.new(cf1.p, cf1.LookVector * 1000)
-local obj, pos = game.Workspace:FindPartOnRayWithIgnoreList(r1,  {lplr.Character.Head})
+local obj, pos = game.Workspace:FindPartOnRayWithIgnoreList(r1,  {lplr.Character.Torso})
 local dist = (aimatpart.CFrame.p- pos).magnitude
 if obj then
 --print(obj:GetFullName())
