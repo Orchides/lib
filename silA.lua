@@ -1,9 +1,9 @@
-if game.PlaceId == (1927139201) then
+if game.PlaceId == (7167319176) then
 local Config = {
     Enabled = true,
     TeamCheck = false,
-    HitPart = "Head",
-    Method = "Raycast",
+    HitPart = "HumanoidRootPart",
+    Method = "Mouse.Hit/Target",
     FieldOfView = {
         Enabled = false,
         Radius = 10000
